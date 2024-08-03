@@ -1,4 +1,13 @@
-# README.md
+<!-- Tools & Technology --> 
+
+<div align="center">
+
+   ![Python Badge](https://img.shields.io/badge/-Python-3B4252?style=flat&logo=python&logoColor=EBCB8B)
+   ![Jupyter Badge](https://img.shields.io/badge/-Jupyter-3B4252?style=flat&logo=jupyter&logoColor=D08770)
+   ![Moises Badge](https://img.shields.io/badge/-Moises-3B4252?style=flat&logo=moises&logoColor=8FBCBB)
+
+</div>
+
 
 ## Sound Analysis Notebooks
 
