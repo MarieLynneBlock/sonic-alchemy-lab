@@ -35,6 +35,7 @@ Before you begin, ensure you have the following installed on your machine:
 - Python 3.7 or higher
 - Jupyter Notebook
 - Recommended: Anaconda distribution for simplified package management
+- pre-commit
 
 ## Installation
 
