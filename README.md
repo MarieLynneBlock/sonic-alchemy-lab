@@ -1,4 +1,4 @@
-<!-- Tools & Technology --> 
+<!-- Tools & Technology -->
 
 <div align="center">
 
@@ -26,16 +26,71 @@ This repository contains Jupyter notebooks designed for the analysis of sound wa
 
 ## Introduction
 
-The Sound Analysis Notebooks provide a comprehensive suite of tools for analysing various aspects of sound and music. These notebooks cover topics ranging from basic waveform analysis to advanced MIR techniques. The goal is to offer an accessible platform for both educational and professional purposes, promoting the synergy between science, technology, engineering, art, and mathematics (STEAM).
+The Sound Analysis Notebooks provide a comprehensive suite of tools for analysing various aspects of sound and music. These notebooks cover topics ranging from basic waveform analysis to advanced MIR techniques. The goal is to offer an accessible platform for both educational and professional purposes.
+
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your machine:
 
-- Python 3.7 or higher
-- Jupyter Notebook
-- Recommended: Anaconda distribution for simplified package management
-- pre-commit
+- **Python 3.7 or higher**: Required for running the hooks and other project dependencies.
+- **Jupyter Notebook**: Necessary for working with `.ipynb` files.
+- **Anaconda distribution (Recommended)**: Simplifies package management and deployment.
+- **pre-commit**: To enable and run the pre-commit hooks.
+
+### Installation Instructions
+
+1. **Install Python 3.7 or higher**:
+    - Download and install the latest version of Python from [python.org](https://www.python.org/downloads/).
+
+2. **Install Anaconda (Recommended)**:
+    - Download and install Anaconda from [anaconda.com](https://www.anaconda.com/products/distribution#download-section).
+
+3. **Install Jupyter Notebook**:
+    - If you have Anaconda installed, Jupyter Notebook is included. If not, install it using pip:
+      ```sh
+      pip install notebook
+      ```
+
+4. **Install pre-commit**:
+    - Install pre-commit globally using pip:
+      ```sh
+      pip install pre-commit
+      ```
+
+### Setting Up Pre-commit Hooks
+
+1. **Clone the Repository**:
+    ```sh
+    git clone <repository_url>
+    cd <repository_directory>
+    ```
+
+2. **Install the Pre-commit Hooks**:
+    - Run the following command to install the pre-commit hooks specified in the `.pre-commit-config.yaml` file:
+      ```sh
+      pre-commit install
+      ```
+
+3. **Run Pre-commit Hooks Manually (Optional)**:
+    - To run the pre-commit hooks on all files manually, use:
+      ```sh
+      pre-commit run --all-files
+      ```
+
+### Pre-commit Hooks Configuration
+
+The project is configured to use the following pre-commit hooks:
+
+- **Bandit**: Checks Python code for security issues.
+- **Black**: Formats Python code to adhere to PEP 8.
+- **End-of-file Fixer**: Ensures files end with a newline.
+- **Flake8**: Lints Python code for style and quality.
+- **nbstripout**: Strips output from Jupyter Notebooks to keep diffs clean.
+- **Pyupgrade**: Upgrades syntax for newer versions of Python.
+- **Trailing Whitespace**: Ensures no trailing whitespace.
+- **YAML Check**: Checks for valid YAML syntax.
+
 
 ## Installation
 
