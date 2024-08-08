@@ -112,11 +112,17 @@ The project is configured to use the following pre-commit hooks:
     python -m venv venv
     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
     ```
+    or on Windows:
+
+     ```bash
+      python -m venv venv
+    source venv\Scripts\activate
+    ```
 
 4. Install the required packages:
 
     ```bash
-    pip install -r requirements.txt
+    pip install -r requirements.yaml
     ```
 
 ## Usage
@@ -127,6 +133,11 @@ To start using the notebooks:
 
     ```bash
     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+    or on Windows:
+
+     ```bash
+    source venv\Scripts\activate
     ```
 
 2. Launch Jupyter Notebook:
@@ -139,50 +150,17 @@ To start using the notebooks:
 
 ## Notebooks Overview
 
-### 1. Basic Sound Wave Analysis
+### 1. Time Domain Audio Representations
+- **Amplitude Envelope (AE)**: The amplitude envelope is a representation of how the amplitude (or loudness) of an audio signal changes over time. It is derived from the audio waveform by tracking the peaks of the signal's absolute amplitude over short time intervals, creating a smooth curve that outlines the overall shape of the sound. The amplitude envelope is useful in various audio analysis tasks, including identifying the temporal structure of a sound, detecting transient events, and distinguishing between different types of audio signals based on their dynamic characteristics.
 
-- **Description**: Introduction to sound waves, time-domain and frequency-domain analysis.
-- **Contents**: Waveform visualization, Fourier Transform, spectrograms.
-
-### 2. Audio Feature Extraction
-
-- **Description**: Techniques to extract features from audio signals for further analysis.
-- **Contents**: MFCCs, chroma features, spectral contrast, zero-crossing rate.
-
-### 3. Music Information Retrieval (MIR)
-
-- **Description**: Advanced techniques for analysing musical content.
-- **Contents**: Beat detection, tempo estimation, key detection, genre classification.
-
-### 4. Machine Learning for Audio
-
-- **Description**: Applying machine learning algorithms to audio data.
-- **Contents**: Audio classification, feature engineering, model training and evaluation.
-
-### 5. Real-Time Audio Processing
-
-- **Description**: Techniques for processing audio in real-time.
-- **Contents**: Real-time spectrogram, audio effects, signal filtering.
 
 ## Contributing
 
 We welcome contributions from the community. If you wish to contribute, please follow these steps:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
+2. Create a new branch (`git checkout -b feature/branch`).
 3. Make your changes.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
+4. Commit your changes (`git commit -m 'Add a feature'`).
+5. Push to the branch (`git push origin feature/branch`).
 6. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## References
-
-For further reading and references, consult the following resources:
-<!-- todo -->
-- [Digital Signal Processing: A Practical Guide for Engineers and Scientists](https://www.example.com)
-- [Music Information Retrieval: A Tutorial](https://www.example.com)
-- [Python Audio Analysis Library](https://www.example.com)
