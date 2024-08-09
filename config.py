@@ -2,7 +2,7 @@ import os
 
 
 # Base directory paths
-BASE_DIR = os.path.dirname(__file__)  # Top-level directory of your project
+BASE_DIR = os.path.dirname(__file__)  # Top-level directory
 DATA_DIR = os.path.join(BASE_DIR, "local_data")
 OUTPUT_DIR = os.path.join(DATA_DIR, "output_graphs")
 
@@ -15,7 +15,7 @@ AUDIO_FILE_SUNO_WITS = os.path.join(
     AUDIO_DIR, "SUNO_Whispers-in-the-Shadows.mp3"
 )
 
-# List of uutput directories organised by analysis type
+# List of output directories organised by analysis type
 TIME_DOMAIN_OUTPUT_DIR = os.path.join(
     OUTPUT_DIR, "time_domain_audio_representations"
 )
