@@ -40,7 +40,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### Installation Instructions
 
-1. **Install Python 3.7 or higher**:
+1. **Install Python 3.8 or higher, preferably 3.11**:
     - Download and install the latest version of Python from [python.org](https://www.python.org/downloads/).
 
 2. **Install Anaconda (Recommended)**:
