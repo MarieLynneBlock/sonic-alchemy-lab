@@ -47,5 +47,5 @@ def ensure_directories():
         os.makedirs(dir_path, exist_ok=True)
 
 
-# Initialize directories
+# Initialise directories
 ensure_directories()
