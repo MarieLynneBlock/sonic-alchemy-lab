@@ -1,4 +1,6 @@
 # import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+
 
 from .parameters import (
     BACKGROUND_COLOR,
@@ -8,6 +10,12 @@ from .parameters import (
     FONTSIZE_TITLE,
     FONTSIZE_SUBTITLE,
 )
+
+
+def create_custom_colormap():
+    colors = ["#5E81AC", "#81A1C1", "#88C0D0", "#D08770", "#BF616A"]
+    cmap_name = "custom_mfcc"
+    return LinearSegmentedColormap.from_list(cmap_name, colors, N=256)
 
 
 def configure_plot(ax, title, subtitle):
@@ -50,11 +58,12 @@ def configure_plot(ax, title, subtitle):
         ha="center",
     )
 
-    # Customize the legend
+    # Customise the legend
     legend = ax.legend(
         facecolor=BACKGROUND_COLOR,
         edgecolor=SPINE_COLOR,
         labelcolor=SPINE_COLOR,
     )
+
     for text in legend.get_texts():
         text.set_color(SPINE_COLOR)
