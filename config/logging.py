@@ -20,6 +20,10 @@ def setup_logging(notebook_path):
     os.makedirs(log_dir, exist_ok=True)
     log_file = os.path.join(log_dir, log_file_name)
 
+    # Clear any existing handlers
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s: %(message)s",
