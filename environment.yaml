@@ -1,0 +1,13 @@
+name: sound-analysis
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - librosa
+  - numpy
+  - matplotlib
+  - ipython
+  - pyyaml
+  - pip
+  - pip:
+      - python-dotenv
