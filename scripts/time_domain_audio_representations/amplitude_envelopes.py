@@ -4,6 +4,8 @@ import logging
 import librosa
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.graph_objs as go
+import plotly.io as pio
 
 
 # Local imports & configurations
@@ -16,6 +18,7 @@ from config.parameters import (
 )
 from config.logging import setup_logging
 from config.matplotlib_plots import configure_plot
+from config.plotly_plots import configure_plotly_layout
 
 
 # Adjust sys.path to include the root directory
@@ -50,7 +53,7 @@ def calculate_amplitude_envelope(y, frame_size=2056, hop_length=128):
 
 
 def plot_signals(time, y, t_frames, amplitude_envelope, audio_file_path):
-    """Plot the original signal and amplitude envelope."""
+    """Plot the original signal and amplitude envelope using matplotlib."""
     fig, ax = plt.subplots(figsize=(14, 5))
     ax.plot(time, y, color=ORIGINAL_SIGNAL_COLOR, label="Original Signal")
     ax.plot(
@@ -59,7 +62,6 @@ def plot_signals(time, y, t_frames, amplitude_envelope, audio_file_path):
         color=AMPLITUDE_ENVELOPE_COLOR,
         label="Amplitude Envelope",
     )
-
     configure_plot(
         ax,
         title=os.path.basename(audio_file_path),
@@ -82,7 +84,41 @@ def save_plot(fig, audio_file_path):
     fig.savefig(output_path, facecolor=BACKGROUND_COLOR)
 
 
-def analyse_audio(audio_file_path):
+def plot_interactive_signals(
+    time, y, t_frames, amplitude_envelope, audio_file_path
+):
+    """Create an interactive plot of the original signal and amplitude envelope
+    using plotly."""
+
+    logging.info("Creating interactive plot")
+
+    # Create traces for the original signal and amplitude envelope
+    original_trace = go.Scatter(
+        x=time,
+        y=y,
+        mode="lines",
+        name="Original Signal",
+        line=dict(color=ORIGINAL_SIGNAL_COLOR),
+    )
+    envelope_trace = go.Scatter(
+        x=t_frames,
+        y=amplitude_envelope,
+        mode="lines",
+        name="Amplitude Envelope",
+        line=dict(color=AMPLITUDE_ENVELOPE_COLOR),
+    )
+
+    # Use the configure_plotly_layout function
+    layout = configure_plotly_layout("Interactive Plot", audio_file_path)
+
+    # Create the figure
+    fig = go.Figure(data=[original_trace, envelope_trace], layout=layout)
+
+    # Show the plot
+    pio.show(fig)
+
+
+def analyse_audio(audio_file_path, interactive=False):
     """Analyse the audio file and plot the amplitude envelope."""
     try:
         y, sr = load_audio_file(audio_file_path)
@@ -93,13 +129,20 @@ def analyse_audio(audio_file_path):
             range(frames_count), sr=sr, hop_length=128
         )
 
-        plot_signals(time, y, t_frames, amplitude_envelope, audio_file_path)
+        # Choose between interactive and static plotting
+        if interactive:
+            plot_interactive_signals(
+                time, y, t_frames, amplitude_envelope, audio_file_path
+            )
+        else:
+            plot_signals(
+                time, y, t_frames, amplitude_envelope, audio_file_path
+            )
+
         save_plot(plt.gcf(), audio_file_path)
         return y, sr, amplitude_envelope, time, t_frames
-
     except FileNotFoundError:
         logging.error(f"File not found: {audio_file_path}")
-
     except Exception as e:
         logging.error(f"An error occurred: {e}")
 
@@ -109,7 +152,10 @@ audio_file_key = AUDIO_FILE_SAX_A3
 audio_file_path = audio_config.get_audio_file(audio_file_key)
 
 try:
-    y, sr, amplitude_envelope, time, t_frames = analyse_audio(audio_file_path)
+    # Set interactive=True for plotly, False for matplotlib
+    y, sr, amplitude_envelope, time, t_frames = analyse_audio(
+        audio_file_path, interactive=True
+    )
     logging.info(f"Successfully analysed audio file {audio_file_path}")
 except Exception as e:
     logging.error(f"Error analysing audio file {audio_file_path}: {e}")
